@@ -3,20 +3,17 @@ package com.barcodegenerator.barcodegenerator.service;
 import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
 import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExist;
 import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
+import com.barcodegenerator.barcodegenerator.util.BarcodeUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.lang.Nullable;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.mockito.ArgumentMatchers.any;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,6 +24,9 @@ class BarcodeServiceTest {
 
     @Mock
     private QrBarcodeRepository qrBarcodeRepository;
+
+    @Mock
+    private BarcodeUtil barcodeUtil;
 
     @Spy
     @InjectMocks
@@ -60,7 +60,7 @@ class BarcodeServiceTest {
     void createQrBarcode() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
         barcodeService.createQrBarcode(barcode);
-        verify(barcodeService, times(1)).generateQrBarcode(barcode);
+        verify(barcodeUtil, times(1)).generateQrBarcode(barcode);
         verify(qrBarcodeRepository, times(1)).save(barcode);
     }
 
@@ -91,7 +91,6 @@ class BarcodeServiceTest {
     @Test
     void deleteQrBarcode() {
         barcodeService.deleteQrBarcode(1L);
-        verify(qrBarcodeRepository).deleteById(1L);
         verify(qrBarcodeRepository, times(1)).deleteById(1L);
     }
 }
