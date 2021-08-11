@@ -51,7 +51,7 @@ public class BarcodeService {
     }
 
     public QrBarcode findQrBarcodeById(Long id){
-        return qrBarcodeRepository.findQrBarcodeById(id).orElse(null);
+        return qrBarcodeRepository.findQrBarcodeById(id).orElseThrow(() -> new BarcodeDoesNotExist(id));
     }
 
     public List<QrBarcode> findAllQrBarcodes(){
