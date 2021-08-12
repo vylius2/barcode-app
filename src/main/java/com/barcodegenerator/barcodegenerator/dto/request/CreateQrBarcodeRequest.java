@@ -14,4 +14,9 @@ public class CreateQrBarcodeRequest {
     @NotBlank
     @Size(min = 1, max = 7089, message = "Invalid data length")
     private String data;
+
+    public CreateQrBarcodeRequest(String name, String data){
+        this.name = name;
+        this.data = data;
+    }
 }

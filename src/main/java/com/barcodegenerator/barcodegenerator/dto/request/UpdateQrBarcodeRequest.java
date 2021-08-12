@@ -10,10 +10,6 @@ import javax.validation.constraints.Size;
 @Data
 public class UpdateQrBarcodeRequest {
 
-    @NotNull
-    @Positive
-    private Long id;
-
     @NotBlank
     @Size(min = 2, max = 25, message = "Invalid name length")
     private String name;
@@ -24,4 +20,10 @@ public class UpdateQrBarcodeRequest {
 
     @NotBlank
     private String path;
+
+    public UpdateQrBarcodeRequest(String name, String data, String path) {
+        this.name = name;
+        this.data = data;
+        this.path = path;
+    }
 }

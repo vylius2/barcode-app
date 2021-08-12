@@ -36,7 +36,7 @@ public class BarcodeController {
         return barcodeService.findAllQrBarcodes();
     }
 
-    @PutMapping("/update/{id}") //TODO KAIP KINTAMOJO PERDAVIMAS APSIRASO ENDPOINTE
+    @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public QrBarcode updateQrBarcode(@PathVariable("id") Long id,
             @Valid @RequestBody UpdateQrBarcodeRequest updateQrBarcodeRequest){
