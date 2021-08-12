@@ -12,11 +12,11 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-public class HomeController {
+public class BarcodeController {
 
     BarcodeService barcodeService;
 
-    public HomeController (BarcodeService barcodeService){
+    public BarcodeController(BarcodeService barcodeService){
         this.barcodeService = barcodeService;
     }
 

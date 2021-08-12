@@ -1,28 +1,19 @@
 package com.barcodegenerator.barcodegenerator.service;
 
 import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
-import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExist;
+import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExistException;
 import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
 import com.barcodegenerator.barcodegenerator.util.BarcodeUtil;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class BarcodeService {
 
-    QrBarcodeRepository qrBarcodeRepository;
+    private final QrBarcodeRepository qrBarcodeRepository;
 
-    BarcodeUtil barcodeUtil;
+    private final BarcodeUtil barcodeUtil;
 
     public BarcodeService (QrBarcodeRepository qrBarCodeRepository, BarcodeUtil barcodeUtil){
         this.qrBarcodeRepository = qrBarCodeRepository;
@@ -35,7 +26,7 @@ public class BarcodeService {
     }
 
     public QrBarcode findQrBarcodeById(Long id){
-        return qrBarcodeRepository.findQrBarcodeById(id).orElseThrow(() -> new BarcodeDoesNotExist(id));
+        return qrBarcodeRepository.findQrBarcodeById(id).orElseThrow(() -> new BarcodeDoesNotExistException(id));
     }
 
     public List<QrBarcode> findAllQrBarcodes(){
@@ -44,7 +35,7 @@ public class BarcodeService {
 
     public QrBarcode updateQrBarcode(QrBarcode qrBarcode){
         if (qrBarcodeRepository.findQrBarcodeById(qrBarcode.getId()).isEmpty()){
-            throw new BarcodeDoesNotExist(qrBarcode.getId());
+            throw new BarcodeDoesNotExistException(qrBarcode.getId());
         }
         return qrBarcodeRepository.save(qrBarcode);
 

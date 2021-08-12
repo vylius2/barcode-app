@@ -1,14 +1,13 @@
 package com.barcodegenerator.barcodegenerator.service;
 
 import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
-import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExist;
+import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExistException;
 import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
 import com.barcodegenerator.barcodegenerator.util.BarcodeUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -28,7 +27,6 @@ class BarcodeServiceTest {
     @Mock
     private BarcodeUtil barcodeUtil;
 
-    @Spy
     @InjectMocks
     private BarcodeService barcodeService;
 
@@ -46,19 +44,16 @@ class BarcodeServiceTest {
     void updateQrBarcodeThrowsException() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
         when(qrBarcodeRepository.findQrBarcodeById(any(Long.class))).thenReturn(Optional.empty());
-        assertThrows(BarcodeDoesNotExist.class, () -> barcodeService.updateQrBarcode(barcode));
+        assertThrows(BarcodeDoesNotExistException.class, () -> barcodeService.updateQrBarcode(barcode));
         verify(qrBarcodeRepository, never()).save(any(QrBarcode.class));
     }
 
-    @Test
-    void generateQrBarcode() {
-//        QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
-//        barcodeService.generateQrBarcode(barcode);
-    }
+
 
     @Test
     void createQrBarcode() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
+        doNothing().when(barcodeUtil).generateQrBarcode(barcode);
         barcodeService.createQrBarcode(barcode);
         verify(barcodeUtil, times(1)).generateQrBarcode(barcode);
         verify(qrBarcodeRepository, times(1)).save(barcode);
@@ -76,7 +71,7 @@ class BarcodeServiceTest {
     @Test
     void findQrBarcodeByIdThrowsException() {
         when(qrBarcodeRepository.findQrBarcodeById(1L)).thenReturn(Optional.empty());
-        assertThrows(BarcodeDoesNotExist.class, () -> barcodeService.findQrBarcodeById(1L));
+        assertThrows(BarcodeDoesNotExistException.class, () -> barcodeService.findQrBarcodeById(1L));
         verify(qrBarcodeRepository, times(1)).findQrBarcodeById(any(Long.class));
     }
 

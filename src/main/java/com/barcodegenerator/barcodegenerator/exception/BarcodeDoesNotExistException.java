@@ -3,9 +3,9 @@ package com.barcodegenerator.barcodegenerator.exception;
 import lombok.Getter;
 
 @Getter
-public class BarcodeDoesNotExist extends RuntimeException{
+public class BarcodeDoesNotExistException extends RuntimeException{
     private Long id;
-    public BarcodeDoesNotExist(Long id){
+    public BarcodeDoesNotExistException(Long id){
         this.id = id;
     }
 }
