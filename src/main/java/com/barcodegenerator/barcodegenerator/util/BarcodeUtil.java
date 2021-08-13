@@ -19,7 +19,6 @@ public class BarcodeUtil {
     //TODO SUTVARKYT
     //    MatrixToImageWriter matrixToImageWriter = new MultiFormatWriter().encode(qrBarCode.getData(), BarcodeFormat.QR_CODE, 500, 500);
     public void generateQrBarcode(QrBarcode qrBarCode){
-
         try {
             qrBarCode.setPath(path + UUID.randomUUID() + ".jpg");
             BitMatrix matrix = new MultiFormatWriter().encode(qrBarCode.getData(), BarcodeFormat.QR_CODE, 500, 500);

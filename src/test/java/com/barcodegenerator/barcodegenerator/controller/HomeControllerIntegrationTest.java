@@ -76,7 +76,7 @@ public class HomeControllerIntegrationTest {
         QrBarcode qrBarcode = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), QrBarcode.class);
 
         assertEquals(qrBarcode.getId(), 3L);
-        assertEquals(qrBarcode.getData(), qrBarcodeRepository.findQrBarcodeById(3L).get().getData());
+        assertEquals(qrBarcode.getData(), qrBarcodeRepository.findById(3L).get().getData());
     }
 
     @Test
@@ -126,7 +126,7 @@ public class HomeControllerIntegrationTest {
 
         QrBarcode qrBarcode = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), QrBarcode.class);
 
-        assertEquals(qrBarcode, qrBarcodeRepository.findQrBarcodeById(2L).get());
+        assertEquals(qrBarcode, qrBarcodeRepository.findById(2L).get());
     }
 
 }

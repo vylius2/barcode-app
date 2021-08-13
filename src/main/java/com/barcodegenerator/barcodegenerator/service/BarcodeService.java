@@ -26,7 +26,7 @@ public class BarcodeService {
     }
 
     public QrBarcode findQrBarcodeById(Long id){
-        return qrBarcodeRepository.findQrBarcodeById(id).orElseThrow(() -> new BarcodeDoesNotExistException(id));
+        return qrBarcodeRepository.findById(id).orElseThrow(() -> new BarcodeDoesNotExistException(id));
     }
 
     public List<QrBarcode> findAllQrBarcodes(){
@@ -34,7 +34,7 @@ public class BarcodeService {
     }
 
     public QrBarcode updateQrBarcode(QrBarcode qrBarcode){
-        if (qrBarcodeRepository.findQrBarcodeById(qrBarcode.getId()).isEmpty()){
+        if (qrBarcodeRepository.findById(qrBarcode.getId()).isEmpty()){
             throw new BarcodeDoesNotExistException(qrBarcode.getId());
         }
         return qrBarcodeRepository.save(qrBarcode);

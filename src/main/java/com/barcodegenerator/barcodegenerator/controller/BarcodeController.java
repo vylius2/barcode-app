@@ -40,7 +40,9 @@ public class BarcodeController {
             @ApiResponse(code = 200, message = "Successfully get car record by id"),
             @ApiResponse(code = 404, message = "Car not found error"),
             @ApiResponse(code = 401, message = "Unauthorized"),
-            @ApiResponse(code = 403, message = "Forbidden access to endpoint")
+            @ApiResponse(code = 403, message = "Forbidden access to endpoint"),
+            @ApiResponse(code = 405, message = "Method not allowed")
+
     })
     @GetMapping("/get/{id}")
     public QrBarcode getQrBarcode(@PathVariable("id") Long id) {

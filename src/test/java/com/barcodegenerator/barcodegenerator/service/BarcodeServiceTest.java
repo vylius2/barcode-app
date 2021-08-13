@@ -34,7 +34,7 @@ class BarcodeServiceTest {
     void testUpdateQrBarcode() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
         when(qrBarcodeRepository.save(barcode)).thenReturn(barcode);
-        when(qrBarcodeRepository.findQrBarcodeById(any(Long.class))).thenReturn(Optional.of(barcode));
+        when(qrBarcodeRepository.findById(any(Long.class))).thenReturn(Optional.of(barcode));
         QrBarcode result = barcodeService.updateQrBarcode(barcode);
         verify(qrBarcodeRepository, times(1)).save(barcode);
         assertEquals(result.getName(), barcode.getName());
@@ -43,7 +43,7 @@ class BarcodeServiceTest {
     @Test
     void testUpdateQrBarcodeThrowsException() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
-        when(qrBarcodeRepository.findQrBarcodeById(any(Long.class))).thenReturn(Optional.empty());
+        when(qrBarcodeRepository.findById(any(Long.class))).thenReturn(Optional.empty());
         assertThrows(BarcodeDoesNotExistException.class, () -> barcodeService.updateQrBarcode(barcode));
         verify(qrBarcodeRepository, never()).save(any(QrBarcode.class));
     }
@@ -62,17 +62,17 @@ class BarcodeServiceTest {
     @Test
     void testFindQrBarcodeById() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
-        when(qrBarcodeRepository.findQrBarcodeById(1L)).thenReturn(Optional.of(barcode));
+        when(qrBarcodeRepository.findById(1L)).thenReturn(Optional.of(barcode));
         QrBarcode result = barcodeService.findQrBarcodeById(1L);
         assertEquals(result.getId(), barcode.getId());
-        verify(qrBarcodeRepository, times(1)).findQrBarcodeById(any(Long.class));
+        verify(qrBarcodeRepository, times(1)).findById(any(Long.class));
     }
 
     @Test
     void testFindQrBarcodeByIdThrowsException() {
-        when(qrBarcodeRepository.findQrBarcodeById(1L)).thenReturn(Optional.empty());
+        when(qrBarcodeRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(BarcodeDoesNotExistException.class, () -> barcodeService.findQrBarcodeById(1L));
-        verify(qrBarcodeRepository, times(1)).findQrBarcodeById(any(Long.class));
+        verify(qrBarcodeRepository, times(1)).findById(any(Long.class));
     }
 
     @Test
