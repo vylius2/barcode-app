@@ -81,7 +81,7 @@ public class HomeControllerIntegrationTest {
 
     @Test
     public void testDeleteQrCode()throws Exception{
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/delete/{id}", 3L))
+        mockMvc.perform(MockMvcRequestBuilders.delete("/delete/{id}", 3L))
                 .andExpect(MockMvcResultMatchers.status().isNoContent())
                 .andReturn();
 
