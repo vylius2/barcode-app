@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 @Component
-public class QrBarcodeUtil extends BarcodeUtil{
+public class QrBarcodeUtil extends BaseBarcode {
     @Value("${qr.barcode.dir}")
     private String path;
 

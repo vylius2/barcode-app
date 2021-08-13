@@ -3,7 +3,6 @@ package com.barcodegenerator.barcodegenerator.service;
 import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
 import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExistException;
 import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
-import com.barcodegenerator.barcodegenerator.util.BarcodeUtil;
 import com.barcodegenerator.barcodegenerator.util.QrBarcodeUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
