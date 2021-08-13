@@ -4,6 +4,7 @@ import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
 import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExistException;
 import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
 import com.barcodegenerator.barcodegenerator.util.BarcodeUtil;
+import com.barcodegenerator.barcodegenerator.util.QrBarcodeUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,7 +26,7 @@ class BarcodeServiceTest {
     private QrBarcodeRepository qrBarcodeRepository;
 
     @Mock
-    private BarcodeUtil barcodeUtil;
+    private QrBarcodeUtil qrBarcodeUtil;
 
     @InjectMocks
     private BarcodeService barcodeService;
@@ -53,9 +54,9 @@ class BarcodeServiceTest {
     @Test
     void testCreateQrBarcode() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
-        doNothing().when(barcodeUtil).generateQrBarcode(barcode);
+        doNothing().when(qrBarcodeUtil).generateBarcodeJPG(barcode);
         barcodeService.createQrBarcode(barcode);
-        verify(barcodeUtil, times(1)).generateQrBarcode(barcode);
+        verify(qrBarcodeUtil, times(1)).generateBarcodeJPG(barcode);
         verify(qrBarcodeRepository, times(1)).save(barcode);
     }
 

@@ -3,7 +3,7 @@ package com.barcodegenerator.barcodegenerator.service;
 import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
 import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExistException;
 import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
-import com.barcodegenerator.barcodegenerator.util.BarcodeUtil;
+import com.barcodegenerator.barcodegenerator.util.QrBarcodeUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,15 +13,15 @@ public class BarcodeService {
 
     private final QrBarcodeRepository qrBarcodeRepository;
 
-    private final BarcodeUtil barcodeUtil;
+    private final QrBarcodeUtil qrBarcodeUtil;
 
-    public BarcodeService (QrBarcodeRepository qrBarCodeRepository, BarcodeUtil barcodeUtil){
+    public BarcodeService (QrBarcodeRepository qrBarCodeRepository, QrBarcodeUtil qrBarcodeUtil){
         this.qrBarcodeRepository = qrBarCodeRepository;
-        this.barcodeUtil = barcodeUtil;
+        this.qrBarcodeUtil = qrBarcodeUtil;
     }
 
     public QrBarcode createQrBarcode(QrBarcode qrBarCode){
-        barcodeUtil.generateQrBarcode(qrBarCode);
+        qrBarcodeUtil.generateBarcodeJPG(qrBarCode);
         return qrBarcodeRepository.save(qrBarCode);
     }
 

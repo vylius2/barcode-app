@@ -29,10 +29,6 @@ public class QrBarcode {
         this.name = createQrBarcodeRequest.getName();
     }
 
-    public QrBarcode(String name, String data) {
-        this.name = name;
-        this.data = data;
-    }
     public QrBarcode(Long id, String name, String data) {
         this.id = id;
         this.name = name;
