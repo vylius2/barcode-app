@@ -1,4 +1,4 @@
-package com.barcodegenerator.barcodegenerator.dto.request;
+package com.barcodegenerator.barcodegenerator.api.dto.request;
 
 import lombok.Data;
 

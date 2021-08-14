@@ -1,10 +1,10 @@
-package com.barcodegenerator.barcodegenerator.controller;
+package com.barcodegenerator.barcodegenerator.api.controller;
 
-import com.barcodegenerator.barcodegenerator.dto.request.CreateQrBarcodeRequest;
-import com.barcodegenerator.barcodegenerator.dto.request.UpdateQrBarcodeRequest;
-import com.barcodegenerator.barcodegenerator.dto.response.ErrorResponse;
-import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
-import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
+import com.barcodegenerator.barcodegenerator.api.dto.request.CreateQrBarcodeRequest;
+import com.barcodegenerator.barcodegenerator.api.dto.request.UpdateQrBarcodeRequest;
+import com.barcodegenerator.barcodegenerator.api.dto.response.ErrorResponse;
+import com.barcodegenerator.barcodegenerator.persistence.entity.QrBarcode;
+import com.barcodegenerator.barcodegenerator.persistence.repository.QrBarcodeRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

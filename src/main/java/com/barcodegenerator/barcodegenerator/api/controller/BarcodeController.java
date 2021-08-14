@@ -1,9 +1,9 @@
-package com.barcodegenerator.barcodegenerator.controller;
+package com.barcodegenerator.barcodegenerator.api.controller;
 
-import com.barcodegenerator.barcodegenerator.dto.request.CreateQrBarcodeRequest;
-import com.barcodegenerator.barcodegenerator.dto.request.UpdateQrBarcodeRequest;
-import com.barcodegenerator.barcodegenerator.dto.response.CreateQrBarcodeResponse;
-import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
+import com.barcodegenerator.barcodegenerator.api.dto.request.CreateQrBarcodeRequest;
+import com.barcodegenerator.barcodegenerator.api.dto.request.UpdateQrBarcodeRequest;
+import com.barcodegenerator.barcodegenerator.api.dto.response.CreateQrBarcodeResponse;
+import com.barcodegenerator.barcodegenerator.persistence.entity.QrBarcode;
 import com.barcodegenerator.barcodegenerator.service.BarcodeService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -46,7 +46,7 @@ public class BarcodeController {
     })
     @GetMapping("/get/{id}")
     public QrBarcode getQrBarcode(@PathVariable("id") Long id) {
-        return barcodeService.findQrBarcodeById(id);
+        return barcodeService.getQrBarcodeById(id);
     }
 
     @ApiOperation(value = "Get Qr Barcodes", tags = "getQrBarcodes", httpMethod = "GET")
@@ -57,7 +57,7 @@ public class BarcodeController {
     })
     @GetMapping("/get")
     public List<QrBarcode> getQrBarcodes() {
-        return barcodeService.findAllQrBarcodes();
+        return barcodeService.getAllQrBarcodes();
     }
 
     @ApiOperation(value = "Update Qr Barcode", tags = "updateQrBarcode", httpMethod = "PUT")

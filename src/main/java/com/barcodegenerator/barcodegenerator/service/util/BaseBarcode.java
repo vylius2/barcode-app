@@ -1,4 +1,4 @@
-package com.barcodegenerator.barcodegenerator.util;
+package com.barcodegenerator.barcodegenerator.service.util;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;

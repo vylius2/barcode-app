@@ -1,6 +1,6 @@
 package com.barcodegenerator.barcodegenerator.exception;
 
-import com.barcodegenerator.barcodegenerator.dto.response.ErrorResponse;
+import com.barcodegenerator.barcodegenerator.api.dto.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

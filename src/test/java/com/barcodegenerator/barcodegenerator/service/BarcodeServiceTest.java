@@ -1,9 +1,9 @@
 package com.barcodegenerator.barcodegenerator.service;
 
-import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
+import com.barcodegenerator.barcodegenerator.persistence.entity.QrBarcode;
 import com.barcodegenerator.barcodegenerator.exception.BarcodeDoesNotExistException;
-import com.barcodegenerator.barcodegenerator.repository.QrBarcodeRepository;
-import com.barcodegenerator.barcodegenerator.util.QrBarcodeUtil;
+import com.barcodegenerator.barcodegenerator.persistence.repository.QrBarcodeRepository;
+import com.barcodegenerator.barcodegenerator.service.util.QrBarcodeUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -63,7 +63,7 @@ class BarcodeServiceTest {
     void testFindQrBarcodeById() {
         QrBarcode barcode = new QrBarcode(1L, "Katinukas", "415684132");
         when(qrBarcodeRepository.findById(1L)).thenReturn(Optional.of(barcode));
-        QrBarcode result = barcodeService.findQrBarcodeById(1L);
+        QrBarcode result = barcodeService.getQrBarcodeById(1L);
         assertEquals(result.getId(), barcode.getId());
         verify(qrBarcodeRepository, times(1)).findById(any(Long.class));
     }
@@ -71,14 +71,14 @@ class BarcodeServiceTest {
     @Test
     void testFindQrBarcodeByIdThrowsException() {
         when(qrBarcodeRepository.findById(1L)).thenReturn(Optional.empty());
-        assertThrows(BarcodeDoesNotExistException.class, () -> barcodeService.findQrBarcodeById(1L));
+        assertThrows(BarcodeDoesNotExistException.class, () -> barcodeService.getQrBarcodeById(1L));
         verify(qrBarcodeRepository, times(1)).findById(any(Long.class));
     }
 
     @Test
     void testFindAllQrBarcodes() {
         when(qrBarcodeRepository.findAll()).thenReturn(List.of(new QrBarcode(), new QrBarcode()));
-        List<QrBarcode> result = barcodeService.findAllQrBarcodes();
+        List<QrBarcode> result = barcodeService.getAllQrBarcodes();
         assertEquals(result.size(), 2);
         verify(qrBarcodeRepository, times(1)).findAll();
     }

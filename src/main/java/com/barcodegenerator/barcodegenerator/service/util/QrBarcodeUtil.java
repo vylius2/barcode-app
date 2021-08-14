@@ -1,6 +1,6 @@
-package com.barcodegenerator.barcodegenerator.util;
+package com.barcodegenerator.barcodegenerator.service.util;
 
-import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
+import com.barcodegenerator.barcodegenerator.persistence.entity.QrBarcode;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import org.springframework.beans.factory.annotation.Value;

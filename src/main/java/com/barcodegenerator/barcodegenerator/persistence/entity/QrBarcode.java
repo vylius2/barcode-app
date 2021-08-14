@@ -1,7 +1,7 @@
-package com.barcodegenerator.barcodegenerator.entity;
+package com.barcodegenerator.barcodegenerator.persistence.entity;
 
-import com.barcodegenerator.barcodegenerator.dto.request.CreateQrBarcodeRequest;
-import com.barcodegenerator.barcodegenerator.dto.request.UpdateQrBarcodeRequest;
+import com.barcodegenerator.barcodegenerator.api.dto.request.CreateQrBarcodeRequest;
+import com.barcodegenerator.barcodegenerator.api.dto.request.UpdateQrBarcodeRequest;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

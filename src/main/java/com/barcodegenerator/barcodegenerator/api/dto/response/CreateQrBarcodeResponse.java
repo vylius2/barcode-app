@@ -1,6 +1,6 @@
-package com.barcodegenerator.barcodegenerator.dto.response;
+package com.barcodegenerator.barcodegenerator.api.dto.response;
 
-import com.barcodegenerator.barcodegenerator.entity.QrBarcode;
+import com.barcodegenerator.barcodegenerator.persistence.entity.QrBarcode;
 import lombok.Data;
 
 @Data
