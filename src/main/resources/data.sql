@@ -27,7 +27,7 @@ CREATE TABLE user_role
 );
 
 INSERT INTO "user" (id, username, password)
-VALUES (1, 'admin', '{bcrypt}$2a$10$WJvAKW5R1VM2SSaAWf0WYO/FBcovz6X3BpulRoS2FWdUbcCZPo8V2'),
+VALUES (1, 'admin', '{bcrypt}$2a$12$OhT0DqMSOiSnYs/8sAfm6eh/zLN4cSYlOjS2dZ2HPe9AKsRIBBu86'),
        (2, 'user', '{bcrypt}$2a$10$WJvAKW5R1VM2SSaAWf0WYO/FBcovz6X3BpulRoS2FWdUbcCZPo8V2');
 
 INSERT INTO role (id, name)
