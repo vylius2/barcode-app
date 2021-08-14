@@ -24,4 +24,11 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handle(UserNotFoundException e) {
+        String message = "Invalid request body provided";
+        ErrorResponse errorResponse = new ErrorResponse(message, 404);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
 }
