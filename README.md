@@ -5,4 +5,4 @@ BEFORE RUNNING THIS APP!!
   Also in the same properties file change spring.profiles.active to "dev" for in memory data base.
  -To login use username: admin 
                password: admin
- 
+ THIS APP DOES NOT HAVE USER INTERFACE, USE POSTMAN/INSOMNIA FOR TESTING!!
